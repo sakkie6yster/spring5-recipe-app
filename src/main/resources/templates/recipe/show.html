@@ -35,7 +35,6 @@
                                     <li th:remove="all">cat one</li>
                                     <li th:remove="all">cat two</li>
                                     <li th:remove="all">cat three</li>
-                                    <!--/*thymesVar id="recipe" type="guru.springframework.domain.Category"*/-->
                                     <li th:each="category : ${recipe.categories}" th:text="${category.description}">cat one</li>
                                 </ul>
                             </div>
@@ -95,7 +94,6 @@
                                     <li th:remove="all">Cup of milk</li>
                                     <li th:remove="all">1 Teaspoon of chocolate</li>
                                     <li th:remove="all">1 Teaspoon of sugar</li>
-                                    <!--/*thymesVar id="recipe" type="guru.springframework.domain.Ingredient"*/-->
                                     <li th:each="ingredient : ${recipe.ingredients}"
                                         th:text="${ingredient.amount}
                                         + ' ' + ${ingredient.uom.description}
