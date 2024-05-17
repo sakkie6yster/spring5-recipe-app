@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 @Slf4j
 @Service
@@ -39,17 +40,33 @@ public class RecipeServiceImpl implements RecipeService {
     }
 
     @Override
-    public Recipe findById(Long id) {
-        return recipeRepository.findById(id).orElseThrow(() -> new RuntimeException("Recipe Not Found"));
+    public Recipe findById(Long l) {
+
+        Optional<Recipe> recipeOptional = recipeRepository.findById(l);
+
+        if (!recipeOptional.isPresent()) {
+            throw new RuntimeException("Recipe Not Found!");
+        }
+
+        return recipeOptional.get();
     }
 
     @Override
     @Transactional
-    public RecipeCommand saveRecipeCommand(RecipeCommand recipeCommand) {
-        Recipe detachedRecipe = recipeCommandToRecipe.convert(recipeCommand);
+    public RecipeCommand findCommandById(Long l) {
+        Recipe recipe = findById(l);
+        RecipeCommand recipeCommand = recipeToRecipeCommand.convert(recipe);
+        return recipeCommand;
+        //return recipeToRecipeCommand.convert(findById(l));
+    }
 
-        Recipe savedRecipe =  recipeRepository.save(detachedRecipe);
-        log.debug("Saved RecipeId: " + savedRecipe.getId());
+    @Override
+    @Transactional
+    public RecipeCommand saveRecipeCommand(RecipeCommand command) {
+        Recipe detachedRecipe = recipeCommandToRecipe.convert(command);
+
+        Recipe savedRecipe = recipeRepository.save(detachedRecipe);
+        log.debug("Saved RecipeId:" + savedRecipe.getId());
         return recipeToRecipeCommand.convert(savedRecipe);
     }
 }
