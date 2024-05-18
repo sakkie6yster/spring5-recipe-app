@@ -70,4 +70,18 @@ class RecipeServiceImplTest {
         assertEquals(1, recipes.size());
         Mockito.verify(recipeRepository, Mockito.times(1)).findAll();
     }
+
+    @Test
+    public void testDeleteById() {
+        //given
+        Long idToDelete = Long.valueOf(2L);
+
+        //when
+        recipeService.deleteById(idToDelete);
+
+        //no 'when', since method has void return type
+
+        //then
+        verify(recipeRepository, times(1)).deleteById(anyLong());
+    }
 }
