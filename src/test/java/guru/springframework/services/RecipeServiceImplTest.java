@@ -13,8 +13,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.ui.Model;
-
 
 import java.util.HashSet;
 import java.util.Optional;
@@ -53,6 +51,14 @@ class RecipeServiceImplTest {
         Throwable exception = assertThrows(NotFoundException.class, () -> recipeService.findById(1L));
         assertEquals("Recipe Not Found", exception.getMessage());
     }
+
+//    @Test
+//    public void getRecipeByIdTestNumberFormat() throws Exception {
+//        when(recipeRepository.findById(anyLong())).thenThrow(java.lang.NumberFormatException.class);
+//
+//        Throwable exception = assertThrows(NumberFormatException.class, () -> recipeService.findById(Long.valueOf(1L)));
+//        assertEquals("Invalid ID value: 1", exception.getMessage());
+//    }
 
     @Test
     public void getRecipeCommandByIdTest() throws Exception {
