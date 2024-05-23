@@ -49,7 +49,7 @@ class RecipeServiceImplTest {
         when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
 
         Throwable exception = assertThrows(NotFoundException.class, () -> recipeService.findById(1L));
-        assertEquals("Recipe Not Found", exception.getMessage());
+        assertEquals("Recipe Not Found, For Id value: 1", exception.getMessage());
     }
 
 //    @Test
