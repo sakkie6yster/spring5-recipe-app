@@ -15,6 +15,7 @@ public class Notes {
     @OneToOne
     private Recipe recipe;
     @Lob
+    @Column(length = 16_777_216)
     private String recipeNotes;
 
 

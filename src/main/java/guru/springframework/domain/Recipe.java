@@ -22,15 +22,18 @@ public class Recipe {
     private String url;
 
     @Lob
+    @Column(length = 16_777_216)
     private String directions;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
     private Set<Ingredient> ingredients = new HashSet<>();
 
     @Lob
+    @Column(length = 16_777_216)
     private Byte[] image;
 
     @Enumerated(value = EnumType.STRING)
+    @Column(name = "difficulty", nullable = false, columnDefinition = "varchar")
     private Difficulty difficulty;
 
     @OneToOne(cascade = CascadeType.ALL)
