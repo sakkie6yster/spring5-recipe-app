@@ -73,10 +73,9 @@
         </dependency>
 
         <dependency>
-            <groupId>net.sourceforge.cobertura</groupId>
-            <artifactId>cobertura</artifactId>
-            <version>2.1.1</version>
-            <scope>test</scope>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>cobertura-maven-plugin</artifactId>
+            <version>2.7</version>
             <exclusions>
                 <exclusion>
                     <groupId>com.sun</groupId>
