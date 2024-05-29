@@ -45,6 +45,7 @@ public class RecipeController {
     }
 
 
+    // The forward slash here is like super important. it's make or break
     @PostMapping("recipe/")
     public String saveOrUpdate(@Valid @ModelAttribute("recipe") RecipeCommand command, BindingResult bindingResult){
 
@@ -61,6 +62,7 @@ public class RecipeController {
 
         return "redirect:/recipe/" + savedCommand.getId() + "/show";
     }
+
     @GetMapping("/recipe/{id}/delete")
     public String deleteById(@PathVariable String id) {
         log.debug("Deleting id: " + id);
