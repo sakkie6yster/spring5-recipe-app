@@ -34,13 +34,13 @@ jobs:
       #- run: mvn integration-test cobertura:cobertura
       - run: mvn integration-test
 
-orbs:
-  codecov: codecov/codecov@4.0.1
-workflows:
-  upload-to-codecov:
-    jobs:
-      - checkout
-      - codecov/upload
-#      - run:
-#          name: Send to CodeCov
-#          command: bash <(curl -s https://codecov.io/bash
+#orbs:
+#  codecov: codecov/codecov@4.0.1
+#workflows:
+#  upload-to-codecov:
+#    jobs:
+#      - checkout
+#      - codecov/upload
+##      - run:
+##          name: Send to CodeCov
+##          command: bash <(curl -s https://codecov.io/bash
